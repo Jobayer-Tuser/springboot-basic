@@ -1,5 +1,6 @@
 package com.stmanagment.sts.controller;
 
+import com.stmanagment.sts.exception.DepartmentNotFoundException;
 import com.stmanagment.sts.interfaces.DepartmentServiceInterface;
 import com.stmanagment.sts.model.Department;
 import org.slf4j.Logger;
@@ -30,7 +31,7 @@ public class DepartmentController {
     }
 
     @GetMapping("show/{id}")
-    public Department show(@PathVariable("id") Long id){
+    public Department show(@PathVariable("id") Long id) throws DepartmentNotFoundException {
         return departmentServiceInterface.findDepartmentById(id);
     }
 
