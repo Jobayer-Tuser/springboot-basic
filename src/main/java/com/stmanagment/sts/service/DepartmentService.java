@@ -5,6 +5,7 @@ import com.stmanagment.sts.interfaces.DepartmentServiceInterface;
 import com.stmanagment.sts.model.Department;
 import com.stmanagment.sts.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +17,11 @@ public class DepartmentService implements DepartmentServiceInterface {
 
     @Autowired
     DepartmentRepository departmentRepository;
+
+    @Value("${custom.properties}")
+    private String customPropertyValue;
+    @Value("${file.upload-dir}")
+    private String directoryPath;
 
     @Override
     public List<Department> getAllDepartment(){

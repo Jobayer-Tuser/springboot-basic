@@ -4,6 +4,7 @@ import com.stmanagment.sts.exception.DepartmentNotFoundException;
 import com.stmanagment.sts.interfaces.DepartmentServiceInterface;
 import com.stmanagment.sts.model.Department;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,7 @@ class DepartmentControllerTest {
     }
 
     @Test
+    @Disabled
     public void Test_store() throws Exception {
         Department inputDepartment = Department.builder()
                 .departmentName("Chemistry")
@@ -55,6 +57,7 @@ class DepartmentControllerTest {
     }
 
     @Test
+    @Disabled
     public void Test_show() throws Exception {
         Mockito.when(departmentServiceInterface.findDepartmentById(1L)).thenReturn(department);
 
