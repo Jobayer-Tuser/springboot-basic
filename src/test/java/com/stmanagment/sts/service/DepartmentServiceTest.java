@@ -1,5 +1,6 @@
 package com.stmanagment.sts.service;
 
+import com.stmanagment.sts.interfaces.DepartmentServiceInterface;
 import com.stmanagment.sts.model.Department;
 import com.stmanagment.sts.repository.DepartmentRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -17,7 +18,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 public class DepartmentServiceTest {
 
     @Autowired
-    DepartmentService departmentService;
+    DepartmentServiceInterface departmentServiceInterface;
 
     @MockBean
     DepartmentRepository departmentRepository;
@@ -37,7 +38,7 @@ public class DepartmentServiceTest {
     //@Disabled
     public void Test_findDepartmentByName(){
         String departmentName = "Bangla";
-        Department found = departmentService.findDepartmentByName(departmentName);
+        Department found = departmentServiceInterface.findDepartmentByName(departmentName);
         assertEquals(departmentName, found.getDepartmentName());
     }
 }
