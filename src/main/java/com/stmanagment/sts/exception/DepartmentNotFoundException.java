@@ -1,6 +1,6 @@
 package com.stmanagment.sts.exception;
 
-public class DepartmentNotFoundException extends Exception{
+public class DepartmentNotFoundException extends Exception {
     public DepartmentNotFoundException() {
         super();
     }
