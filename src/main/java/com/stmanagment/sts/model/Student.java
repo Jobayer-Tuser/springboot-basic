@@ -1,61 +1,37 @@
 package com.stmanagment.sts.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import ch.qos.logback.classic.db.names.ColumnName;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "students")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Table(
+        name = "students",
+        uniqueConstraints = @UniqueConstraint(columnNames = "email_address")
+)
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String name;
-    private String address;
-    private String mobile;
+    private Long id;
+    @NotNull
+    @Column(name = "first_name")
+    private String firstName;
+    @NotNull
+    @Column(name = "last_name")
+    private String lastName;
+    @NotNull
+    @Column(name = "email_address", nullable = false)
+    private String emailId;
 
-    public Student() {
-    }
-
-    public Student(int id, String name, String address, String mobile) {
-        this.id = id;
-        this.name = name;
-        this.address = address;
-        this.mobile = mobile;
-    }
-    
-    public int getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAddress() {
-        return this.address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getMobile() {
-        return this.mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
+    @Embedded
+    private Guardian guardian;
 }
